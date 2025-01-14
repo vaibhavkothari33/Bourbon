@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "620047658518",
+    "project_id": "bourbon-33",
+    "storage_bucket": "bourbon-33.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:620047658518:android:2324aacb3dd03f624f4f37",
+        "android_client_info": {
+          "package_name": "com.yourappname"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9-tbf2XRDAA9K1W3dqZYlimaPdNCwWks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
