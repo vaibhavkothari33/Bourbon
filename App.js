@@ -7,13 +7,15 @@ import LoginScreen from './src/screens/LoginScreen';
 import UserInputScreen from './src/screens/UserInputScreen';
 import DashboardScreen from './src/screens/DashboardScreen';
 import CalorieCounterScreen from './src/screens/CalorieCounterScreen';
+import RecipeScreen from './src/screens/RecipeScreen';
 import Icon from 'react-native-vector-icons/Ionicons';
-// import './src/firebaseConfig'; // Comment out the Firebase configuration
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function MainTabs({ route }) {
+  const params = route.params || {}; // Ensure `params` exists
+
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -24,8 +26,8 @@ function MainTabs({ route }) {
             iconName = 'home';
           } else if (route.name === 'Calorie') {
             iconName = 'flame';
-          } else if (route.name === 'Account') {
-            iconName = 'person';
+          } else if (route.name === 'Recipe') {
+            iconName = 'restaurant';
           }
 
           return <Icon name={iconName} size={size} color={color} />;
@@ -36,9 +38,9 @@ function MainTabs({ route }) {
         inactiveTintColor: 'gray',
       }}
     >
-      <Tab.Screen name="Dashboard" component={DashboardScreen} initialParams={route.params} />
+      <Tab.Screen name="Dashboard" component={DashboardScreen} initialParams={params} />
       <Tab.Screen name="Calorie" component={CalorieCounterScreen} />
-      {/* <Tab.Screen name="Account" component={UserAccountScreen} initialParams={route.params} /> */}
+      <Tab.Screen name="Recipe" component={RecipeScreen} />
     </Tab.Navigator>
   );
 }

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, ScrollView } from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
-// import firestore from '@react-native-firebase/firestore';
-// import auth from '@react-native-firebase/auth';
 
 const UserInputScreen = ({ navigation }) => {
   const [weight, setWeight] = useState('');
@@ -11,18 +9,7 @@ const UserInputScreen = ({ navigation }) => {
   const [age, setAge] = useState('');
   const [gender, setGender] = useState('');
 
-  const handleNext = async () => {
-    // Temporarily disable the Firestore logic
-    // const user = auth().currentUser;
-    // if (user) {
-    //   await firestore().collection('users').doc(user.uid).set({
-    //     weight,
-    //     height,
-    //     goalWeight,
-    //     age,
-    //     gender,
-    //   });
-    // }
+  const handleNext = () => {
     navigation.navigate('MainTabs', { weight, height, goalWeight, age, gender });
   };
 

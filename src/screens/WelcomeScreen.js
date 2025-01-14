@@ -12,7 +12,7 @@ export default function WelcomeScreen({ navigation }) {
     }).start(() => {
       setTimeout(() => {
         navigation.navigate('Login');
-      }, 3000);
+      }, 1500);
     });
   }, [fadeAnim, navigation]);
 

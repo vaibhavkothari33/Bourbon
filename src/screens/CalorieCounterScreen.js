@@ -30,7 +30,7 @@ const CalorieCounterScreen = () => {
         onChangeText={setQuery}
         style={styles.input}
       />
-      <Button title="Search" onPress={fetchCalorieData} />
+      <Button title="Search" onPress={fetchCalorieData} color="#6200EE" />
       <FlatList
         data={results}
         keyExtractor={(item, index) => index.toString()}
@@ -49,42 +49,43 @@ const CalorieCounterScreen = () => {
 };
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      padding: 20,
-      backgroundColor: '#f8f9fa',
-    },
-    label: {
-      fontSize: 18,
-      marginBottom: 10,
-      color: '#333',
-    },
-    input: {
-      borderWidth: 1,
-      borderColor: '#ced4da',
-      borderRadius: 5,
-      padding: 10,
-      marginBottom: 20,
-      backgroundColor: '#fff',
-    },
-    button: {
-      backgroundColor: 'tomato',
-      padding: 10,
-      borderRadius: 5,
-    },
-    buttonText: {
-      color: '#fff',
-      fontSize: 16,
-    },
-    resultCard: {
-      padding: 15,
-      marginBottom: 10,
-      backgroundColor: '#e9ecef',
-      borderRadius: 5,
-    },
-    resultText: {
-      fontSize: 16,
-      color: '#333',
-    },
-  });
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: '#f8f9fa',
+  },
+  label: {
+    fontSize: 18,
+    marginBottom: 10,
+    color: '#6200EE',
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#6200EE',
+    borderRadius: 5,
+    padding: 10,
+    marginBottom: 20,
+    backgroundColor: '#fff',
+  },
+  button: {
+    backgroundColor: '#6200EE',
+    padding: 10,
+    borderRadius: 5,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+  },
+  resultCard: {
+    padding: 15,
+    marginBottom: 10,
+    backgroundColor: '#e9ecef',
+    borderRadius: 5,
+  },
+  resultText: {
+    fontSize: 16,
+    color: '#333',
+  },
+});
+
 export default CalorieCounterScreen;
