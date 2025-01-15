@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -9,13 +9,12 @@ import DashboardScreen from './src/screens/DashboardScreen';
 import CalorieCounterScreen from './src/screens/CalorieCounterScreen';
 import RecipeScreen from './src/screens/RecipeScreen';
 import Icon from 'react-native-vector-icons/Ionicons';
+import ActivityScreen from './src/screens/ActivityScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-function MainTabs({ route }) {
-  const params = route.params || {}; // Ensure `params` exists
-
+function MainTabs() {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -28,6 +27,8 @@ function MainTabs({ route }) {
             iconName = 'flame';
           } else if (route.name === 'Recipe') {
             iconName = 'restaurant';
+          } else if (route.name === 'Activity') {
+            iconName = 'book';
           }
 
           return <Icon name={iconName} size={size} color={color} />;
@@ -38,7 +39,8 @@ function MainTabs({ route }) {
         inactiveTintColor: 'gray',
       }}
     >
-      <Tab.Screen name="Dashboard" component={DashboardScreen} initialParams={params} />
+      <Tab.Screen name="Dashboard" component={DashboardScreen} />
+      <Tab.Screen name="Activity" component={ActivityScreen} />
       <Tab.Screen name="Calorie" component={CalorieCounterScreen} />
       <Tab.Screen name="Recipe" component={RecipeScreen} />
     </Tab.Navigator>
@@ -46,16 +48,12 @@ function MainTabs({ route }) {
 }
 
 export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Add state to track login status
+
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Welcome"
-        screenOptions={{
-          ...TransitionPresets.SlideFromRightIOS,
-          headerStyle: { backgroundColor: '#6200EE' },
-          headerTintColor: '#fff',
-          headerTitleStyle: { fontWeight: 'bold' },
-        }}
+        initialRouteName={isLoggedIn ? 'MainTabs' : 'Welcome'} // Conditional rendering based on login status
       >
         <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={LoginScreen} options={{ title: 'Login' }} />
